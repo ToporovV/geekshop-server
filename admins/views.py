@@ -3,6 +3,7 @@ from django.urls import reverse
 from users.models import User
 from admins.forms import UserAdminRegisterForm, UserAdminProfileForm
 from django.contrib.auth.decorators import user_passes_test
+from django.views.generic.list import ListView
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -10,11 +11,16 @@ def index(request):
     return render(request, 'admins/admin.html')
 
 
-@user_passes_test(lambda u: u.is_superuser)
-def admin_users(request):
-    context = {'title': 'GeekShop - Админ | Пользователи',
-               'users': User.objects.all()}
-    return render(request, 'admins/admin-users-read.html', context)
+# @user_passes_test(lambda u: u.is_superuser)
+# def admin_users(request):
+#     context = {'title': 'GeekShop - Админ | Пользователи',
+#                'users': User.objects.all()}
+#     return render(request, 'admins/admin-users-read.html', context)
+
+
+class UserListView(ListView):
+    model = User
+    template_name = 'admins/admin-users-read.html'
 
 
 @user_passes_test(lambda u: u.is_superuser)
