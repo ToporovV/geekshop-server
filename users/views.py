@@ -1,8 +1,5 @@
-from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib import auth, messages
-from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
