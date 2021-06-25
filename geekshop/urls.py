@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from products.views import index, products
+from products.views import index, ProductsListView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +25,7 @@ urlpatterns = [
     path('products/', include('products.urls', namespace='products')),
     path('users/', include('users.urls', namespace='users')),
     path('baskets/', include('baskets.urls', namespace='baskets')),
+    path('admin-staff/', include('admins.urls', namespace='admins')),
 ]
 
 if settings.DEBUG:
